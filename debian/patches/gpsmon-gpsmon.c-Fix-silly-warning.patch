@@ -1,0 +1,33 @@
+From 283fc17de89f666d16b8cef45e7b8ecd602927cf Mon Sep 17 00:00:00 2001
+From: "Gary E. Miller" <gem@rellim.com>
+Date: Fri, 10 Sep 2021 18:07:20 -0700
+Subject: [PATCH] gpsmon/gpsmon.c: Fix silly warning.
+
+gpsd-3.23.1~dev/gpsmon/gpsmon.c:458:27: error: format string is not a string
+literal (potentially insecure) [-Werror,-Wformat-security]
+
+Origin: upstream, https://gitlab.com/gpsd/gpsd/-/commit/283fc17de8
+Bug-Debian: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=997178
+Bug-Ubuntu: https://bugs.launchpad.net/ubuntu/+source/gpsd/+bug/1952229
+Last-Update: 2021-11-25
+
+---
+ gpsmon/gpsmon.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gpsmon/gpsmon.c b/gpsmon/gpsmon.c
+index 7f8a949be..832d2e3c4 100644
+--- a/gpsmon/gpsmon.c
++++ b/gpsmon/gpsmon.c
+@@ -455,7 +455,7 @@ static void refresh_cmdwin(void)
+ {
+     report_lock();
+     (void)wmove(cmdwin, 0, 0);
+-    (void)wprintw(cmdwin, type_name);
++    (void)wprintw(cmdwin, "%s", type_name);
+     promptlen = strlen(type_name);
+     if (fallback != NULL && strcmp(fallback->type_name, type_name) != 0) {
+         (void)waddch(cmdwin, (chtype)' ');
+-- 
+2.34.0
+

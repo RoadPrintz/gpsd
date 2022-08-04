@@ -245,7 +245,7 @@ ircchan = "irc://chat.freenode.net/#gpsd"
 mailman = "https://lists.nongnu.org/mailman/listinfo/"
 mainpage = "https://gpsd.io"
 projectpage = "https://gitlab.com/gpsd/gpsd"
-scpupload = "garyemiller@dl.sv.nongnu.org:/releases/gpsd/"
+scpupload = "esr@dl.sv.nongnu.org:/releases/gpsd/"
 sitename = "GPSD"
 sitesearch = "gpsd.io"
 tiplink = "<a href='https://www.patreon.com/esr'>" \
